@@ -9,12 +9,21 @@
 /**
  * 
  */
+
+class AInputExampleCharacter;
+
 UCLASS()
 class CPP_CONTROL_5_3_API UMyPawnMovementComponent : public UPawnMovementComponent
 {
 	GENERATED_BODY()
 
+public:
+	UMyPawnMovementComponent();
+
+
 protected:
+	UPROPERTY(Transient, DuplicateTransient)
+	TObjectPtr<AInputExampleCharacter> CharacterOwnerP;
 	
 public:
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;

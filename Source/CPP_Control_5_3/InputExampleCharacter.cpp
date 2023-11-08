@@ -34,8 +34,7 @@ void AInputExampleCharacter::BeginPlay()
 // Called every frame
 void AInputExampleCharacter::Tick(float DeltaTime)
 {
-	Super::Tick(DeltaTime);
-
+    Super::Tick(DeltaTime);
 }
 
 // Called to bind functionality to input
@@ -63,16 +62,16 @@ void AInputExampleCharacter::Move(const FInputActionValue& Value)
     if (Controller != nullptr)
     {
         const FVector2D MoveValue = Value.Get<FVector2D>();
-        const FRotator MovementRotation(0, Controller->GetControlRotation().Yaw, 0);
+        //const FRotator MovementRotation(0, Controller->GetControlRotation().Yaw, 0);
 
         // Forward/Backward direction
         if (MoveValue.Y != 0.f)
         {
             // Get forward vector
-            const FVector Direction = MovementRotation.RotateVector(FVector::ForwardVector);
+           // const FVector Direction = MovementRotation.RotateVector(FVector::ForwardVector);
             
-            GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(
-                TEXT("FrontVec: x=%3.1f, y=%3.1f, z=%3.1f"), PlayerController->FrontVec.X, PlayerController->FrontVec.Y, PlayerController->FrontVec.Z));
+            //GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Red, FString::Printf(
+            //    TEXT("FrontVec: x=%3.1f, y=%3.1f, z=%3.1f"), PlayerController->FrontVec.X, PlayerController->FrontVec.Y, PlayerController->FrontVec.Z));
             //PlayerController->FrontVec;
             AddMovementInput(PlayerController->FrontVec, MoveValue.Y);
         }
@@ -81,7 +80,7 @@ void AInputExampleCharacter::Move(const FInputActionValue& Value)
         if (MoveValue.X != 0.f)
         {
             // Get right vector
-            const FVector Direction = MovementRotation.RotateVector(FVector::RightVector);
+            //const FVector Direction = MovementRotation.RotateVector(FVector::RightVector);
 
             AddMovementInput(PlayerController->RightVec, MoveValue.X);
         }
